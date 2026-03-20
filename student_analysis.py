@@ -87,20 +87,18 @@ print(df[df["Attendance"] < 70])
 print("\n🚨 Risk Students:")
 print(df[(df["Marks"] < 40) & (df["Attendance"] < 70)])
 
-
 # 1. Calculate Department Averages
 dep_avg = df.groupby("Department")["Marks"].mean().sort_values()
 
 # 2. Create the Plot
 plt.figure(figsize=(8, 5))
-dep_avg.plot(kind='bar', color=['skyblue', 'salmon', 'lightgreen'])
+plt.bar(dep_avg.index, dep_avg.values, color='#1f77b4')
 
-# 3. Add Labels and Style
+# 3. Add Labels
 plt.title('Average Marks by Department', fontsize=14)
 plt.xlabel('Department', fontsize=12)
 plt.ylabel('Average Marks', fontsize=12)
-plt.xticks(rotation=0) # Keeps department names horizontal
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.xticks(rotation=0)
 
-# 4. Show the result
+# 4. Show
 plt.show()
